@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteReservas" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4869e2b9-be31-46e7-86f4-2e3230f2702e">
+	<property name="ireport.zoom" value="2.1435888100000016"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT r.id, r.cliente_id, c.nombre AS nombre_cliente, c.telefono AS telefono_cliente,
+       r.mesa_id, r.usuario_id, r.fecha, r.hora
+FROM reservas r
+INNER JOIN clientes c ON r.cliente_id = c.id
+ORDER BY r.fecha ASC, r.hora ASC;]]>
+	</queryString>
+	<field name="id" class="java.lang.Object"/>
+	<field name="cliente_id" class="java.lang.Object"/>
+	<field name="nombre_cliente" class="java.lang.Object"/>
+	<field name="telefono_cliente" class="java.lang.Object"/>
+	<field name="mesa_id" class="java.lang.Object"/>
+	<field name="usuario_id" class="java.lang.Object"/>
+	<field name="fecha" class="java.lang.Object"/>
+	<field name="hora" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="-20" y="0" width="595" height="64" uuid="ab54e523-afbd-4b6e-a96f-43226b494ab3"/>
+				<imageExpression><![CDATA["wood.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="5" width="263" height="33" uuid="eddf1137-7f16-455e-99d6-429e63fde339"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Informe Reservas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="63" y="39" width="200" height="22" forecolor="#FFFFFF" uuid="1cfc2d87-88af-417c-8d40-903f72af81b2"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Historial de Reservas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="65a1bb36-9659-49ab-aea3-c826683e34ac"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="69" height="15" uuid="d22e71b1-b054-4614-be29-e4fa2d71853f"/>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="69" y="20" width="108" height="15" uuid="10abf8f9-221b-4b82-bfa8-6e86621e9acc"/>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="177" y="19" width="99" height="15" uuid="b45b301c-8b13-45a6-9cb7-a8ce1ee6c6f8"/>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="19" width="69" height="15" uuid="08c588af-5adf-40de-89d9-1390922556a0"/>
+				<text><![CDATA[Mesa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="345" y="19" width="69" height="15" uuid="b032abfe-46a8-415e-ae8b-f59285226c77"/>
+				<text><![CDATA[Camarero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="414" y="19" width="69" height="15" uuid="48368d5c-d87e-4b4a-9c0c-908513b10b6a"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="483" y="19" width="69" height="15" uuid="4a97d142-a7eb-4a84-ac09-d810dad912d7"/>
+				<text><![CDATA[Hora]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="02609049-1076-4a54-94ef-1e5492ca48fd"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="69" height="15" uuid="0a5c6dbd-008e-47c5-98e0-c8d13854cf44"/>
+				<textFieldExpression><![CDATA[""+$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="69" y="0" width="108" height="15" uuid="f98cc8fd-a0ae-443c-b23e-1ad75f4f3548"/>
+				<textFieldExpression><![CDATA[""+$F{nombre_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="177" y="0" width="99" height="15" uuid="8e736c90-6804-4023-adf9-9eb04a94295a"/>
+				<textFieldExpression><![CDATA[""+$F{telefono_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="276" y="0" width="69" height="15" uuid="2cd5a0fb-e15b-47a6-9afd-cb1772c806f3"/>
+				<textFieldExpression><![CDATA[""+$F{mesa_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="345" y="0" width="69" height="15" uuid="da112ef4-9d66-4466-aee9-cb91aece901f"/>
+				<textFieldExpression><![CDATA[""+$F{usuario_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="414" y="0" width="69" height="15" uuid="59f3f729-fa88-43af-bfe5-1f84cbcfb3ec"/>
+				<textFieldExpression><![CDATA[""+$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="483" y="0" width="69" height="15" uuid="e6906108-7544-49ea-8f05-fc418fd227be"/>
+				<textFieldExpression><![CDATA[""+$F{hora}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1a2affcc-fb69-42bf-b9dd-39a281404ca0"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="92547300-6d63-4412-a3c0-96ece49a26dd"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="b70433db-26d6-4970-9e7d-14c5ca9c06b7"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="abb3d10f-0ba6-4532-9c37-3295a3aefc78"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

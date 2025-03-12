@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteMesas" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d52fc1b2-9985-49bc-9eb5-cadde169ee4c">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="143"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT r.id,
+       c.nombre AS nombre_cliente,
+       c.telefono AS telefono_cliente,
+       r.mesa_id,
+       u.nombre AS nombre_camarero,
+       r.fecha,
+       r.hora
+FROM reservas r
+INNER JOIN clientes c ON r.cliente_id = c.id
+INNER JOIN usuarios u ON r.usuario_id = u.id
+ORDER BY r.fecha ASC, r.hora ASC;]]>
+	</queryString>
+	<field name="id" class="java.lang.Object"/>
+	<field name="nombre_cliente" class="java.lang.Object"/>
+	<field name="telefono_cliente" class="java.lang.Object"/>
+	<field name="mesa_id" class="java.lang.Object"/>
+	<field name="nombre_camarero" class="java.lang.Object"/>
+	<field name="fecha" class="java.lang.Object"/>
+	<field name="hora" class="java.lang.Object"/>
+	<variable name="variable1" class="java.lang.String"/>
+	<group name="mesa_id">
+		<groupExpression><![CDATA[$F{mesa_id}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#333333" uuid="fb3f4030-713f-4d3a-a450-6bc3c1ae5e5b"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""+$F{mesa_id}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="051f5312-9b95-43b6-9df2-2f79b62306c3"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="-20" y="0" width="595" height="64" uuid="38577b7e-c27a-4030-b37c-ca796b627cf7"/>
+				<imageExpression><![CDATA["wood.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="5" width="263" height="33" uuid="30485516-1dc0-4f14-851b-04995054c035"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Informe Mesas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="63" y="39" width="213" height="22" forecolor="#FFFFFF" uuid="4a6d4422-2877-4ea7-93f9-27d65f9763a8"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Mesas Más Demandadas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="d28efbf4-c72d-4fea-8786-2bc07a145008"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="92" height="15" uuid="a4e86813-c472-43d2-866c-cda680d02225"/>
+				<text><![CDATA[Reserva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="92" y="19" width="92" height="15" uuid="a358a3ea-493c-4523-a794-bfc83b7053b4"/>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="184" y="19" width="92" height="15" uuid="42b33a83-ce1c-48a3-9891-e3726cf18967"/>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="19" width="92" height="15" uuid="b667544f-764c-4098-984d-f0a868e60c27"/>
+				<text><![CDATA[Camarero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="368" y="19" width="92" height="15" uuid="e5f77672-6ec2-49e0-bd14-3d5a87b10b57"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="460" y="19" width="92" height="15" uuid="5ab43726-14ae-4450-9743-6abfc679ef7d"/>
+				<text><![CDATA[Hora]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="9f22eaa0-13f7-4060-a6b2-50e867b55427"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="92" height="15" uuid="ec4f3a13-86b3-46f1-8eee-ef747d87ca44"/>
+				<textFieldExpression><![CDATA[""+$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="92" y="0" width="92" height="15" uuid="7fd813db-299a-4fe6-b29a-71609646aaf5"/>
+				<textFieldExpression><![CDATA[""+$F{nombre_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="184" y="0" width="92" height="15" uuid="55f06b86-4424-4a55-9569-1f56b9d9e1cd"/>
+				<textFieldExpression><![CDATA[""+$F{telefono_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="276" y="0" width="92" height="15" uuid="0965ca94-2abc-4b8b-aeab-d87b50e5b740"/>
+				<textFieldExpression><![CDATA[""+$F{nombre_camarero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="368" y="0" width="92" height="15" uuid="cfe7194e-231a-40cf-bc2d-8034b244bfd0"/>
+				<textFieldExpression><![CDATA[""+$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="460" y="0" width="92" height="15" uuid="5c65a916-9462-4c2d-98ce-fca7e74df5c3"/>
+				<textFieldExpression><![CDATA[""+$F{hora}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="131" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="8a6fbaac-7d1e-458c-b942-4e2a226acb63"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<pie3DChart>
+				<chart>
+					<reportElement x="78" y="0" width="403" height="131" uuid="fbffad20-47f6-42ea-b57c-b0b21dfd0a04"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{mesa_id}]]></keyExpression>
+					<valueExpression><![CDATA[$V{mesa_id_COUNT}]]></valueExpression>
+					<labelExpression><![CDATA["Mesa: " + $F{mesa_id} + " - " + $V{mesa_id_COUNT}]]></labelExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="0704eddb-e9a1-4e19-855c-a3308ab2362e"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="d2648e3e-5925-4e0a-bdf9-914b405e512e"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="8f98e62f-b00f-40f1-a59b-7d1dc2a9c2d4"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
