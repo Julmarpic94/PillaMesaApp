@@ -38,5 +38,17 @@ Con esta aplicación, los administradores y camareros pueden gestionar clientes,
 - Se permite su uso y reutilización para todos los propósitos.
 - En caso se propósitos comerciales, se obliga a dar créditos.
 
+---
+DESPLIEGUE
+
+- Descomprime la carpeta descargada.
+- Abre la carpeta con un IDE (Netbeans, Intelli, Visual Studio Code)
+- Empaquedado:
+  Utilia una app como Lauch4J https://launch4j.sourceforge.net/
+  Crear el ejecutable a partie del .Jar
+- PRA QUE FUNCIONES HAY QUE EJECUTAR EL JAR DESDE LA CARPETA DEL PROYECTO, PUES TODO ENLAZA DESDE AHÍ
+
+LICENCIA: Creative Commons, total libertar para su uso y redistribución.
+
 📌 Autor: Julian Martinez
 📌 GitHub: julmarpic94.github.io
